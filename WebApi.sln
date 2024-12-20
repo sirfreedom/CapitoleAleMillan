@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33027.164
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{55564851-52F7-4E0B-8D0A-7680A6BD4209}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Entity", "WebApi.Entity\WebApi.Entity.csproj", "{CC2E102B-666F-4B8A-A36D-ADD30EDEE693}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{25CC9A02-FDF1-4602-B234-772AF1833A24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "WebApi.Test\WebApi.Test.csproj", "{7DC71380-B91B-4780-9928-41B96EFE1555}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,29 +35,15 @@ Global
 		{25CC9A02-FDF1-4602-B234-772AF1833A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25CC9A02-FDF1-4602-B234-772AF1833A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25CC9A02-FDF1-4602-B234-772AF1833A24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC71380-B91B-4780-9928-41B96EFE1555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC71380-B91B-4780-9928-41B96EFE1555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC71380-B91B-4780-9928-41B96EFE1555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC71380-B91B-4780-9928-41B96EFE1555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3717471C-DAA3-462B-BB97-FFF889368B8C}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://sirfreedom.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = WebApi\\WebApi.csproj
-		SccProjectName1 = WebApi
-		SccLocalPath1 = WebApi
-		SccProjectUniqueName2 = WebApi.Biz\\WebApi.Biz.csproj
-		SccProjectName2 = WebApi.Biz
-		SccLocalPath2 = WebApi.Biz
-		SccProjectUniqueName3 = WebApi.Entity\\WebApi.Entity.csproj
-		SccProjectName3 = WebApi.Entity
-		SccLocalPath3 = WebApi.Entity
-		SccProjectUniqueName4 = WebApi.Data\\WebApi.Data.csproj
-		SccProjectName4 = WebApi.Data
-		SccLocalPath4 = WebApi.Data
 	EndGlobalSection
 EndGlobal
