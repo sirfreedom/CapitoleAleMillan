@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -16,6 +15,7 @@ namespace WebApi.Data
         {
             _SettingConexion = ConnectionString;
         }
+
 
         #region Declaration
 
@@ -59,9 +59,9 @@ namespace WebApi.Data
             {
                 dt = Fill("List").Tables[0];
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
             return EntityBase.ToList<TEntity>(dt);
         }
@@ -76,9 +76,9 @@ namespace WebApi.Data
             {
                 ds = Fill("Get", lDictionary);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
             return EntityBase.ToList<TEntity>(ds.Tables[0]).SingleOrDefault();
         }
@@ -95,9 +95,9 @@ namespace WebApi.Data
                     lDynamic = EntityBase.ToDynamic(ds.Tables[0]);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
             return lDynamic;
         }
@@ -110,9 +110,9 @@ namespace WebApi.Data
             {
                 ExecuteNonQuery("Delete", lDictionary);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -122,9 +122,9 @@ namespace WebApi.Data
             {
                 ExecuteNonQuery("Insert", lParam);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -134,9 +134,9 @@ namespace WebApi.Data
             {
                 ExecuteNonQuery("Update", lParam);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -183,22 +183,20 @@ namespace WebApi.Data
                     cn.Close();
                 }
 
-                if (MessageError.Length > 0 && MessageError.StartsWith("Warning") == false && MessageError.StartsWith("Advertency") == false)
+                if (MessageError.Length > 0)
                 {
                     ds = new DataSet();
                     ds.Tables.Add(new DataTable());
                     throw new Exception(MessageError);
                 }
-
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                if (MessageError.Length > 0 && MessageError.StartsWith("Warning") == false && MessageError.StartsWith("Advertency") == false)
-                    throw;
+                throw new Exception(ex.Message);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -242,17 +240,19 @@ namespace WebApi.Data
                     cn.Close();
                 }
 
-                if (MessageError.Length > 0 && MessageError.StartsWith("Warning") == false && MessageError.StartsWith("Advertency") == false) 
+                if (MessageError.Length > 0)
                 {
-                    throw new Exception(MessageError);  
+                    throw new Exception(MessageError);
                 }
+
             }
             catch (SqlException ex)
             {
+                throw new Exception(ex.Message);
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception(ex.Message);
             }
         }
 

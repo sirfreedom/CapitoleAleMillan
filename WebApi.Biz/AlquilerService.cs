@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebApi.Data;
 using WebApi.Entity;
 
@@ -16,8 +17,15 @@ namespace WebApi.Biz
 
         public void Insert(Alquiler alquiler)
         {
-            ICreateRepository<Alquiler> Serv = new AlquilerData(new ContextSQL<Alquiler>(_ConectionString));
-            Serv.Insert(alquiler.PropertiesToDictionary());
+            try
+            {
+                ICreateRepository<Alquiler> Serv = new AlquilerData(new ContextSQL<Alquiler>(_ConectionString));
+                Serv.Insert(alquiler.PropertiesToDictionary());
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Alquiler> List()

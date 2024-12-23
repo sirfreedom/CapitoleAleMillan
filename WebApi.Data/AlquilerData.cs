@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebApi.Entity;
 
 namespace WebApi.Data
@@ -19,7 +20,14 @@ namespace WebApi.Data
 
         public void Insert(Dictionary<string, string> lParam)
         {
-            _context.Insert(lParam);
+            try
+            {
+                _context.Insert(lParam);
+            }
+            catch (Exception ex) 
+            { 
+                throw ex;
+            }
         }
 
         public List<Alquiler> List()
