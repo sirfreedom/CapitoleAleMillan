@@ -1,6 +1,4 @@
-using System.Configuration;
 using WebApi.Biz;
-using WebApi.Data;
 using WebApi.Entity;
 using WebApi.Model;
 
@@ -20,8 +18,9 @@ namespace WebApi.Test
         public void ListarVehiculos()
         {
             VehiculoService Serv = new VehiculoService(_ConectionString);
-            Serv.List();
-            Assert.Pass();
+            List<Vehiculo> lVehiculo = new List<Vehiculo>();
+            lVehiculo = Serv.List();
+            Assert.IsTrue(lVehiculo.Any(x => DateTime.Parse(x.FechaModelo).Year >= DateTime.Now.Year));
         }
 
         [Test]
@@ -43,12 +42,10 @@ namespace WebApi.Test
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("ya existe un alquiler") || ex.Message.Contains("No es posible alquilar")) 
-                {
-                    Assert.Pass();
-                }
+                Assert.IsTrue(ex.Message.Contains("ya existe un alquiler") || ex.Message.Contains("No es posible alquilar"));
             }
         }
+
 
 
 
